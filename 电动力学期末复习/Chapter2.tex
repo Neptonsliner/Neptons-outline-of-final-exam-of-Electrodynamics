@@ -1,0 +1,308 @@
+\documentclass[main.tex]{subfiles}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{bm}
+\usepackage{wallpaper}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ctex}
+\usepackage{longtable}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float} %指定图片位置
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{tabularray}
+\usepackage{xeCJK}
+\usepackage{verbatim}
+\usepackage{type1cm}
+\usepackage{tocloft}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{diagbox}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{svg}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[a4paper,left=2.85cm,right=2.85cm,top=2.54cm,bottom=2.54cm]{geometry}
+\renewcommand{\normalsize}{\fontsize{14}{16}\selectfont}
+
+
+\begin{document}
+\chapter{电磁现象的普遍规律}
+\section{静电场}
+\subsection{真空中电场}
+库仑定律：
+\begin{align}
+    &\boldsymbol{F} = \frac{1}{4\pi \varepsilon _0} \frac{q_1 q_2}{r^3}\boldsymbol{r}\\
+    &\boldsymbol{E} = \frac{1}{4\pi \varepsilon _0} \frac{q_2}{r^3}\boldsymbol{r}\\
+    &q_1\boldsymbol{E} = \boldsymbol{F}
+\end{align}
+
+高斯定理
+\begin{align}
+    \oint_{S}^{} \boldsymbol{E}\cdot \mathrm{d}\boldsymbol{S} = \frac{q_{in}}{\varepsilon _0}
+\end{align}
+
+由积分变换式\ref{jifenbianhuan1}可以导出电场散度公式：
+\begin{align}
+    &\oint_{S}^{} \boldsymbol{E}\cdot \mathrm{d}\boldsymbol{S} = \int_{V}^{} \nabla \cdot \boldsymbol{E} \mathrm{d}\boldsymbol{V}\\
+    &\frac{q_{in}}{\varepsilon _0} = \frac{\displaystyle \int_{V}^{} \rho \cdot \mathrm{d}\boldsymbol{V}}{\varepsilon _0}\\
+    &\nabla \cdot \boldsymbol{E} = \frac{\rho}{\varepsilon _0}
+\end{align}
+
+静电场沿闭合曲线积分后结果为0，由斯托克斯公式可以导出静电场旋度亦为0的结果：
+\begin{align}
+    &\oint_{L}^{} \boldsymbol{E}\cdot \mathrm{d} \boldsymbol{l} = \int_{S}^{} \nabla \times \boldsymbol{E} \cdot \mathrm{d} \boldsymbol{S} = 0\\
+    \label{E1}&\nabla \times \boldsymbol{E} = 0
+\end{align}
+
+由旋度基本公式$\nabla \times (\nabla \varphi) = 0$与公式\ref{E1}，我们可以设一个标量$\varphi$使得$-\nabla \varphi = \boldsymbol{E}$，这就是\textbf{电势}.其中负号代表电势沿电场线方向减小.
+
+\subsection{介质中电场}
+引入矢量$\boldsymbol{D} = \varepsilon _0 \boldsymbol{E} + \boldsymbol{P}$，其中$\boldsymbol{P}$为极化强度矢量，等于小体积$\Delta V$内的总电偶极矩与$\Delta V$之比：
+\begin{align}
+    \boldsymbol{P} = \frac{\displaystyle \sum_{i}^{} \boldsymbol{P}_i}{\Delta V}
+\end{align}
+
+特别地，在线性介质中，极化强度$\boldsymbol{P}$与$\boldsymbol{E}$之间有简单的线性关系$\boldsymbol{P} = \chi _e \varepsilon _0 \boldsymbol{E}$，由此可得
+\begin{align}
+    \label{guanxi1}&\boldsymbol{D} = \varepsilon \boldsymbol{E} + \boldsymbol{P}\\
+    &\varepsilon = \varepsilon _r \varepsilon _0,\ \varepsilon _r = 1+\chi 
+\end{align}
+
+$\varepsilon $称为介质的电容率，$\varepsilon _r$称为介质的相对电容率.
+
+对应于$\boldsymbol{E}$，可以定义
+\begin{align}
+    &\nabla \cdot \boldsymbol{D} = \rho_{f}\\
+    &\nabla \cdot \boldsymbol{P} = \rho_{p}
+\end{align}
+
+\subsection{电场的边界条件}
+
+\begin{wrapfigure}{l}{7cm}
+	\centering
+	\includesvg[width=0.9\linewidth,height=5cm]{11.svg}
+\end{wrapfigure}
+
+以$\sigma _f$表示自由电荷的电荷面密度，$\sigma _p$表示束缚电荷的电荷面密度.法向分量上有
+\begin{align}
+    \varepsilon _0(E_{2n} - E_{1n}) = \sigma _f + \sigma _p
+\end{align}
+
+由各自定义及式\ref{guanxi1}可以得到：
+\begin{align}
+    &P_{2n} - P_{1n} = - \sigma _p\\
+    &D_{2n} - D_{1n} = \sigma _f
+\end{align}
+
+切向分量上有：
+\begin{align}
+    E_{2n} - E_{1n} = 0
+\end{align}
+
+总结起来就是：
+\begin{align}
+    &\boldsymbol{e}_n \times (\boldsymbol{E}_2 - \boldsymbol{E}_1) = 0\\
+    &\boldsymbol{e}_n \cdot (\boldsymbol{D}_2 - \boldsymbol{D}_1) = \sigma _f
+\end{align}
+
+\section{静磁场}
+\subsection{静磁场的基本定理}
+毕奥-萨伐尔定律：
+\begin{align}
+    \mathrm{d}\boldsymbol{B} = \frac{\mu _0}{4\pi } \frac{I\mathrm{d}\boldsymbol{l}\times \boldsymbol{r}}{r^3}
+\end{align}
+
+静磁场的高斯定理与旋度定理：
+\begin{align}
+    &\nabla \cdot \boldsymbol{B} = 0\\
+    &\nabla \times \boldsymbol{B} = \mu _0\boldsymbol{J}
+\end{align}
+
+其中，$\boldsymbol{J}$表示电流密度.
+
+\subsection{磁介质}
+以$\boldsymbol{M}$表示磁化强度，定义为小体积$\Delta V$内总的磁偶极矩与$\Delta V$之比：
+\begin{align}
+    \boldsymbol{M} = \frac{\displaystyle \sum_{i}^{}m_i}{\Delta V}
+\end{align}
+
+以$\boldsymbol{J}_M$表示磁化电流密度，有：
+\begin{align}
+    \int_{S}^{} \boldsymbol{J}_M \cdot \mathrm{d}\boldsymbol{S} = \oint_{L}^{} \boldsymbol{M} \cdot \mathrm{d}\boldsymbol{l} = \int_{S}^{} \nabla \times \boldsymbol{M} \cdot \mathrm{d}\boldsymbol{S} 
+\end{align}
+
+得到
+\begin{align}
+    \label{guanxi2}\boldsymbol{J}_M = \nabla \times \boldsymbol{M}
+\end{align}
+
+定义矢量$\boldsymbol{H} = \frac{\boldsymbol{B}}{\mu _0}- \boldsymbol{M}$，对于各向同性非铁磁物质，$\boldsymbol{M}$和$\boldsymbol{H}$之间有简单的线性关系：
+\begin{align}
+    \boldsymbol{M} = \chi _M \boldsymbol{H}
+\end{align}
+
+代入式\ref{guanxi2}可得：
+\begin{align}
+    \boldsymbol{B} = \mu \boldsymbol{H}
+\end{align}
+\begin{align}
+    \mu = \mu _r \mu _0,\ \mu _r = 1+\chi _M
+\end{align}
+
+\subsection{磁场的边界条件}
+\begin{wrapfigure}{l}{7cm}
+	\centering
+	\includesvg[width=0.9\linewidth,height=5cm]{12.svg}
+\end{wrapfigure}
+
+对于磁场，法向分量上有：
+\begin{align}
+    B_{2n} - B_{1n} = 0
+\end{align}
+
+切向分量上有：
+\begin{align}
+    H_{2n} - H_{1n} = \alpha _f
+\end{align}
+
+即：
+\begin{align}
+    &\boldsymbol{e}_n \cdot \boldsymbol{B}_2 - \boldsymbol{B}_1 = 0\\
+    &\boldsymbol{e}_n \times \boldsymbol{H}_2 - \boldsymbol{H}_1 = \boldsymbol{\alpha}_f
+\end{align}
+
+\section{Maxwell方程组}
+\subsection{静电场与静磁场中的Maxwell方程组}
+静电场与静磁场中的Maxwell方程组如下：
+\begin{align}
+\left\{\begin{array}{l}
+ \nabla \cdot \boldsymbol{E} = \frac{\rho}{\varepsilon _0}\\
+ \nabla \times \boldsymbol{E} = 0\\
+\nabla \cdot  \boldsymbol{B} = 0\\
+\nabla \times \boldsymbol{B} = \mu _0 \boldsymbol{J}
+\end{array}\right.
+\end{align}
+
+\subsection{真空中的Maxwell方程组}
+\subsubsection{感应电动势}
+一般情况下，我们遇到的绝大部分电场磁场都不是静电场或静磁场.电磁感应现象告诉我们电场和磁场内部能够相互作用.因此非静电、静磁场时要对Maxwell方程组进行修正.
+
+\begin{wrapfigure}{r}{3cm}
+	\centering
+	\includesvg[width=0.9\linewidth,height=5cm]{13.svg}
+\end{wrapfigure}
+
+$\mathcal{E}$为感应电动势，电磁感应定律为：
+\begin{align}
+    &\mathcal{E} = \oint_{L}^{}\boldsymbol{E} \cdot \mathrm{d}\boldsymbol{l} =-\frac{\partial \Phi }{\partial t}  =-\frac{\mathrm{d} }{\mathrm{d} t } \int_{S}^{}\boldsymbol{B}\cdot \mathrm{d}\boldsymbol{S}\\
+    &\nabla \times \boldsymbol{E} = -\frac{\partial \boldsymbol{B}}{\partial t}
+\end{align}
+
+\subsubsection{位移电流假说}
+\begin{wrapfigure}{l}{5cm}
+	\centering	\includesvg[width=0.9\linewidth,height=5cm]{14.svg}
+\end{wrapfigure}
+需要假设存在位移电流$\nabla \cdot (\boldsymbol{J}+\boldsymbol{J}_D) = 0$使得电荷守恒定律满足.由电荷守恒定律得到：
+\begin{align}
+    \nabla \cdot \boldsymbol{J} = \frac{\partial \rho}{\partial t} = 0
+\end{align}
+
+又由电荷密度与电场散度关系式
+\begin{align}
+    \nabla \cdot \boldsymbol{E} = \frac{\rho}{\varepsilon _0}
+\end{align}
+
+得到位移电流表达式
+\begin{align}
+    &\nabla \cdot \left(\boldsymbol{J}+ \varepsilon _0 \frac{\partial \boldsymbol{E}}{\partial t}\right) = 0\\
+    &\boldsymbol{J}_D = \varepsilon _0\frac{\partial \boldsymbol{E}}{\partial t}
+\end{align}
+
+\subsubsection{修正后的Maxwell方程组}
+经过如上两个修正后的Maxwell方程组如下：
+\begin{align}
+\label{Maxwell}\left\{\begin{array}{l}
+ \nabla \cdot \boldsymbol{E} = \frac{\rho}{\varepsilon _0}\\
+ \nabla \times \boldsymbol{E} = -\frac{\partial \boldsymbol{B}}{\partial t}\\
+\nabla \cdot  \boldsymbol{B} = 0\\
+\nabla \times \boldsymbol{B} = \mu _0 \boldsymbol{J}+\mu _0 \varepsilon _0\frac{\partial \boldsymbol{E}}{\partial t}
+\end{array}\right.
+\end{align}
+
+\subsection{介质中的Maxwell方程组}
+可以做简单的代换$\varepsilon _0 \to \varepsilon ,\ \mu _0 \to \mu$，并通过式$\boldsymbol{D} = \varepsilon \boldsymbol{E},\ \boldsymbol{B} = \mu \boldsymbol{H}$得到介质中的Maxwell方程组
+
+\begin{align}
+\label{Maxwell3}\left\{\begin{array}{l}
+ \nabla \cdot \boldsymbol{D} = \rho\\
+ \nabla \times \boldsymbol{E} = -\frac{\partial \boldsymbol{B}}{\partial t}\\
+\nabla \cdot  \boldsymbol{B} = 0\\
+\nabla \times \boldsymbol{H} =\boldsymbol{J}+\frac{\partial \boldsymbol{D}}{\partial t}
+\end{array}\right.
+\end{align}
+
+\section{电磁场的能量与能流}
+\subsection{洛伦兹力}
+对于运动电荷，其受到场的洛伦兹力为
+\begin{align}
+    \boldsymbol{F} = q\boldsymbol{E} +q\boldsymbol{v} \times \boldsymbol{B} 
+\end{align}
+
+而对单位体积内来说，洛伦兹力公式变为
+\begin{align}
+    \boldsymbol{f} = \rho \boldsymbol{E} +\rho \boldsymbol{v} \times \boldsymbol{B} = \boldsymbol{J} \times \boldsymbol{B}
+\end{align}
+
+由此可以推导出功率密度
+\begin{align}
+    \label{guanxi3}\boldsymbol{f} \cdot \boldsymbol{v}= \rho \boldsymbol{v}\cdot \boldsymbol{E} = \boldsymbol{J}\cdot \boldsymbol{E}
+\end{align}
+
+\subsection{电磁场的能量、能流密度}
+考虑空间V，其界面为S.由能量守恒定律得到，通过界面S流入V内的能量=空间V内场对电荷系统所做功率+V内场能量的增加率.即
+\begin{align}
+    \label{nengliumidu}-\oint_{S}^{} \boldsymbol{S} \cdot \mathrm{d} \boldsymbol{\sigma } = \int_{V}^{} \boldsymbol{f} \cdot \boldsymbol{v}\mathrm{d}V+\frac{\mathrm{d} }{\mathrm{d} t} \int_{V}^{}\omega \mathrm{d}V 
+\end{align}
+其中$\boldsymbol{S}$为能流密度，$\omega$为能量密度.
+
+将介质中的Maxwell方程组的第四式$\boldsymbol{J}=\nabla \times \boldsymbol{H} -\frac{\partial \boldsymbol{D}}{\partial t}$代入式\ref{guanxi3}得到：
+\begin{align}
+    \boldsymbol{J}\cdot \boldsymbol{E} = \boldsymbol{E} \cdot (\nabla \times \boldsymbol{H}) - \boldsymbol{E} \cdot \frac{\partial \boldsymbol{D}}{\partial t}
+\end{align}
+
+由式\ref{nabla4}得到：
+\begin{align}
+    \boldsymbol{J}\cdot \boldsymbol{E} = -\nabla \cdot  (\boldsymbol{E} \times \boldsymbol{H}) - \boldsymbol{E} \cdot \frac{\partial \boldsymbol{D}}{\partial t} - \boldsymbol{H} \cdot \frac{\partial \boldsymbol{B}}{\partial t}
+\end{align}
+
+将该式与\ref{nengliumidu}对比可以得到能流密度与能量密度变化率的表达式：
+\begin{align}
+    &\boldsymbol{S} = \boldsymbol{E} \times \boldsymbol{H}\\
+    \label{chang}&\frac{\partial \mathscr{w} }{\partial t} = \boldsymbol{E} \cdot \frac{\partial \boldsymbol{D}}{\partial t} + \boldsymbol{H} \cdot \frac{\partial \boldsymbol{B}}{\partial t}
+\end{align}
+
+真空中，有$\boldsymbol{H} = \frac{1}{\mu _0}\boldsymbol{B}$，$\boldsymbol{D} = \varepsilon _0\boldsymbol{E}$，因此有
+\begin{align}
+    \label{nengliu}&\boldsymbol{S} = \frac{1}{\mu _0}\boldsymbol{E} \times \boldsymbol{B}\\
+    &\mathscr{w} = \frac{1}{2}\left(\varepsilon E^2 + \frac{1}{\mu _0}B^2 \right)
+\end{align}
+
+而在介质中，由式\ref{chang}可以得到场的改变量为
+\begin{align}
+    \delta \mathscr{w}  = \boldsymbol{E} \cdot \delta \boldsymbol{D} + \boldsymbol{H} \cdot \delta \boldsymbol{B}
+\end{align}
+
+\textbf{线性均匀介质中}，$\boldsymbol{D} = \varepsilon \boldsymbol{E}$，$\boldsymbol{B} = \mu \boldsymbol{H}$，因此可以对上式进行积分得到：
+\begin{align}
+    \label{nengliang}\mathscr{w} = \frac{1}{2} (\boldsymbol{E} \cdot \boldsymbol{D} + \boldsymbol{H} \cdot \boldsymbol{B})
+\end{align}
+\end{document}

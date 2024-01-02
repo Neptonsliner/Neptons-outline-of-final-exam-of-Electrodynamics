@@ -1,0 +1,406 @@
+\documentclass[main.tex]{subfiles}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{bm}
+\usepackage{wallpaper}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ctex}
+\usepackage{longtable}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float} %指定图片位置
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{tabularray}
+\usepackage{xeCJK}
+\usepackage{verbatim}
+\usepackage{type1cm}
+\usepackage{tocloft}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{diagbox}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{svg}
+\usepackage[hidelinks]{hyperref}
+\usepackage[a4paper,left=2.85cm,right=2.85cm,top=2.54cm,bottom=2.54cm]{geometry}
+\renewcommand{\normalsize}{\fontsize{14}{16}\selectfont}
+
+
+\begin{document}
+
+\chapter{电磁波的传播}
+\section{平面电磁波}
+\subsection{电磁场波动方程}
+在没有自由电荷的真空中，描述电磁场运动规律的Maxwell方程为
+\begin{align}
+\label{Maxwell2}\left\{\begin{array}{l}
+ \nabla \cdot \boldsymbol{D} = 0\\
+ \nabla \times \boldsymbol{E} = -\frac{\partial \boldsymbol{B}}{\partial t}\\
+\nabla \cdot  \boldsymbol{B} = 0\\
+\nabla \times \boldsymbol{H} = \frac{\partial \boldsymbol{D}}{\partial t}
+\end{array}\right.
+\end{align}
+
+取第二式的旋度，得到
+\begin{align}
+    &\nabla \times (\nabla \times \boldsymbol{E}) = -\frac{\partial }{\partial t} \nabla \times \boldsymbol{B} = -\mu_0 \varepsilon_0 \frac{\partial ^2 \boldsymbol{E}}{\partial t^2} = -\frac{1}{c^2}\frac{\partial ^2 \boldsymbol{E}}{\partial t^2}\\
+    \label{xuandu5.1}&\nabla \times (\nabla \times \boldsymbol{E}) = \nabla(\nabla \cdot \boldsymbol{E}) - \nabla ^2 \boldsymbol{E} = -\nabla ^2 \boldsymbol{E}\ (\nabla \cdot \boldsymbol{E} = 0)
+\end{align}
+
+得到电磁波传播方程1
+\begin{align}
+    \nabla ^2 \boldsymbol{E} - \frac{1}{c^2}\frac{\partial ^2 \boldsymbol{E}}{\partial t^2} = 0
+\end{align}
+
+用同样的方法可以得到电磁波传播方程2
+\begin{align}
+    \nabla ^2 \boldsymbol{B} - \frac{1}{c^2}\frac{\partial ^2 \boldsymbol{B}}{\partial t^2} = 0
+\end{align}
+
+\subsection{时谐电磁波与其平面波解}
+线性均匀介质中一定频率的电磁波，设角频率为$\omega$，电磁场可以表示为
+\begin{align}
+    \label{hanshiE}&\boldsymbol{E} (\boldsymbol{x}, t) = \boldsymbol{E}(\boldsymbol{x})\mathrm{e}^{-\mathrm{i}\omega t}\\
+    &\boldsymbol{B} (\boldsymbol{x}, t) = \boldsymbol{B}(\boldsymbol{x})\mathrm{e}^{-\mathrm{i}\omega t}
+\end{align}
+
+将其代入Maxwell方程组\ref{Maxwell2}中，并应用线性均匀介质条件$\boldsymbol{D} = \varepsilon \boldsymbol{E}, \boldsymbol{B} = \mu \boldsymbol{H}$得到
+\begin{align}
+    \label{shixie1}&\nabla \times \boldsymbol{E} = \mathrm{i} \omega \mu \boldsymbol{H}\\
+    \label{shixie2}&\nabla \times \boldsymbol{H} = -\mathrm{i}\omega \varepsilon \boldsymbol{E}\\
+    &\nabla \cdot \boldsymbol{E} = 0\\
+    &\nabla \cdot \boldsymbol{H} = 0
+\end{align}
+
+由于
+\begin{align}
+    &\nabla \cdot (\nabla \times \boldsymbol{E} )= \mathrm{i} \omega \mu \nabla \cdot \boldsymbol{H} = 0\\
+    &\nabla \cdot (\nabla \times \boldsymbol{H}) = -\mathrm{i}\omega \varepsilon \nabla \cdot \boldsymbol{E} = 0\\
+\end{align}
+
+故只有式\ref{shixie1}与式\ref{shixie2}是独立的，后两项可由前两项导出。
+
+同样地，我们对式\ref{shixie1}取旋度得到
+\begin{align}
+    \nabla \times (\nabla \times \boldsymbol{E}) = \mathrm{i}\omega \mu \nabla \times \boldsymbol{H} = \omega ^2 \mu \varepsilon \boldsymbol{E}
+\end{align}
+
+又由式\ref{xuandu5.1}得到
+\begin{align}
+    \nabla ^2 \boldsymbol{E} + \frac{\omega ^2}{v^2}\boldsymbol{E} = 0
+\end{align}
+
+令$\displaystyle \frac{\omega }{v} = k$，得到\textbf{Helmholtz方程}
+\begin{align}
+    \nabla ^2 \boldsymbol{E} +k^2 \boldsymbol{E} = 0
+\end{align}
+
+解出$\boldsymbol{E}$后，$\boldsymbol{B}$也可以由\ref{shixie1}解出：
+\begin{align}
+    \boldsymbol{B} = -\frac{\mathrm{i}}{\omega}\nabla \times \boldsymbol{E} = -\frac{\mathrm{i}}{k}\sqrt{\mu \varepsilon}\nabla \times \boldsymbol{E}
+\end{align}
+
+\textbf{平面波}：电磁波沿$x$方向传播，其场强在于$x$正交的方向上具有相同值.此时Helmholtz方程化为一维常微分方程
+\begin{align}
+    \frac{\mathrm{d}^2}{\mathrm{d} x^2}\boldsymbol{E}(\boldsymbol{x})+k^2 \boldsymbol{E}(\boldsymbol{x}) = 0
+\end{align}
+
+它的一个解是
+\begin{align}
+    \boldsymbol{E}(\boldsymbol{x}) = \boldsymbol{E}_0\mathrm{e}^{\mathrm{i}kx}
+\end{align}
+
+由式\ref{hanshiE}得到
+\begin{align}
+    \boldsymbol{E}(\boldsymbol{x},t) = \boldsymbol{E}_0\mathrm{e}^{\mathrm{i}kx-\omega t}
+\end{align}
+
+由$\nabla \cdot \boldsymbol{E} = 0$得到
+\begin{align}
+    \mathrm{i}k\boldsymbol{e}_x \cdot \boldsymbol{E} = 0 \Longrightarrow \boldsymbol{E}_x = 0
+\end{align}
+
+\subsection{电磁波的能量和能流}
+
+在电磁波传播中，有关系
+\begin{align}
+    \boldsymbol{B} = \sqrt{\mu \varepsilon}\frac{\boldsymbol{k}}{k}\times \boldsymbol{E} = \sqrt{\mu \varepsilon}\boldsymbol{e}_k \times \boldsymbol{E}
+\end{align}
+
+即$\boldsymbol{E}$、$\boldsymbol{B}$、$\boldsymbol{k}$是三个相互正交的矢量，且$\boldsymbol{E}$和$\boldsymbol{B}$同相，振幅比为
+\begin{align}
+    \left|\frac{\boldsymbol{E}}{\boldsymbol{B}}\right| = \frac{1}{\sqrt{\mu \varepsilon}} = v
+\end{align}
+
+可以得到$\displaystyle \varepsilon E^2 = \frac{1}{\mu}B^2$.又由式\ref{nengliang}得到，在均匀线性介质中电磁场能量密度为
+\begin{align}
+    \mathscr{w} = \frac{1}{2} (\boldsymbol{E} \cdot \boldsymbol{D} + \boldsymbol{H} \cdot \boldsymbol{B}) = \frac{1}{2}\left(\varepsilon E^2+\frac{1}{\mu}B^2 \right)
+\end{align}
+
+故
+\begin{align}
+    \mathscr{w} = \varepsilon E^2 =\frac{1}{\mu}B^2
+\end{align}
+
+而由式\ref{nengliu}可以得到平面电磁波的能流密度
+\begin{align}
+    \boldsymbol{S} = \boldsymbol{E}\times \boldsymbol{H} = \sqrt{\frac{\varepsilon}{\mu}}\boldsymbol{E}\times (\boldsymbol{e}_k \times \boldsymbol{E}) = \sqrt{\frac{\varepsilon}{\mu}}E^2 \boldsymbol{e}_k = v \mathscr{w} \boldsymbol{e}_k
+\end{align}
+
+能量密度和能流密度的时间平均值
+\begin{align}
+    &\mathscr{w} = \frac{1}{2} \varepsilon E_0^2 =\frac{1}{2\mu}B_0^2\\
+    &\boldsymbol{S} =\frac{1}{2} \sqrt{\frac{\varepsilon}{\mu}}E_0^2 \boldsymbol{e}_k
+\end{align}
+
+\section{反射和折射定律}
+
+讨论时谐电磁波时，只需要考虑以下两个边界条件
+
+\begin{align}
+\label{tiaojian1}\left\{\begin{array}{l}
+\boldsymbol{n} \cdot (\boldsymbol{E}_2 - \boldsymbol{E}_1) = 0 \\
+\boldsymbol{n} \cdot (\boldsymbol{H}_2 - \boldsymbol{H}_1) = \alpha 
+\end{array}\right.
+\end{align}
+
+\begin{wrapfigure}{r}{6cm}
+	\centering	\includesvg[width=0.9\linewidth]{zheshefanshe.svg}
+\end{wrapfigure}
+
+设入射波、反射波和折射波的电场强度分别为$\boldsymbol{E}$、$\boldsymbol{E}'$和$\boldsymbol{E}''$，波矢量分别为$\boldsymbol{k}$、$\boldsymbol{k}'$和$\boldsymbol{k}''$，它们的平面波分别表示为：
+\begin{align}
+    &\boldsymbol{E} = \boldsymbol{E}_0\mathrm{e}^{\mathrm{i}(\boldsymbol{k} \cdot \boldsymbol{x} - \omega t)}\\
+    &\boldsymbol{E}' = \boldsymbol{E}'_0\mathrm{e}^{\mathrm{i}(\boldsymbol{k}' \cdot \boldsymbol{x} - \omega t)}\\
+    &\boldsymbol{E}'' = \boldsymbol{E}''_0\mathrm{e}^{\mathrm{i}(\boldsymbol{k}'' \cdot \boldsymbol{x} - \omega t)}
+\end{align}
+
+代入\ref{tiaojian1}第一式中得到
+
+\begin{equation}
+    \boldsymbol{n} \times (\boldsymbol{E}_0 \mathrm{e}^{\mathrm{i} \boldsymbol{k} \cdot \boldsymbol{x}} +\boldsymbol{E}'_0 \mathrm{e}^{\mathrm{i} \boldsymbol{k}' \cdot \boldsymbol{x}}) = \boldsymbol{n} \times \boldsymbol{E}''_0 \mathrm{e}^{\mathrm{i} \boldsymbol{k}'' \cdot \boldsymbol{x}}
+\end{equation}
+
+对界面$z = 0$成立.于是应当有
+\begin{align}
+    k_x = k'_x = k''_x,\ k_y = k'_y = k''_y = 0
+\end{align}
+
+$\theta$、$\theta '$和$\theta ''$代表入射角、反射角和折射角，有
+\begin{align}
+    &k_x = k \mathrm{sin}\theta\\
+    &k'_x = k' \mathrm{sin}\theta '\\
+    &k''_x = k'' \mathrm{sin}\theta ''\\
+\end{align}
+
+设电磁波在两介质中的相速度为$v_1$、$v_2$，则
+\begin{align}
+    \frac{\omega}{v_1} = k = k',\ \frac{\omega}{v_2} = k''
+\end{align}
+
+将波矢及其分量代入得到
+\begin{align}
+    \label{fanshezheshe}\theta = \theta ',\ \frac{\mathrm{sin}\theta}{\mathrm{sin}\theta''} = \frac{v_1}{v_2} = n_{21},\ v = \frac{c}{n}
+\end{align}
+
+这就是\textbf{反射和折射定律}
+
+\section{有导体存在时电磁波的传播}
+\subsection{导体内的电磁波}
+
+在导体内部，$\rho _f = 0$，$\boldsymbol{J} = \sigma \boldsymbol{E}$.Maxwell方程组（式\ref{Maxwell3}）中：
+\begin{align}
+    \nabla \times \boldsymbol{H} = \displaystyle \frac{\partial \boldsymbol{D}}{\partial t} + \sigma \boldsymbol{E}
+\end{align}
+
+对一定频率的电磁波，此时有
+\begin{align}
+    \left\{\begin{array}{l}
+        \nabla \times \boldsymbol{E} = \mathrm{i} \omega \mu \boldsymbol{H}\\
+        \nabla \times \boldsymbol{H} = -\mathrm{i}\omega \varepsilon \boldsymbol{E} + \sigma \boldsymbol{E} = -\mathrm{i}\omega \varepsilon ' \boldsymbol{E}\\
+        \varepsilon ' = \varepsilon +\mathrm{i} \displaystyle \frac{\sigma}{\omega}
+    \end{array}\right.
+\end{align}
+
+此时导体内部满足：
+\begin{align}
+    \left\{\begin{array}{l}
+        \nabla ^2\boldsymbol{E}+k^2 \boldsymbol{E} = 0\\
+        k = \omega \sqrt{\mu \varepsilon '} = \boldsymbol{\beta} + \mathrm{i} \boldsymbol{\alpha}\\
+        \nabla \cdot \boldsymbol{E} = 0\\
+        \boldsymbol{H} = \displaystyle \sqrt{\frac{\varepsilon '}{\mu}}\boldsymbol{n}\times \boldsymbol{E}
+    \end{array}\right.
+\end{align}
+
+这一Helmholtz方程有形式上的平面波解
+\begin{align}
+    \boldsymbol{E}(\boldsymbol{x}) = \boldsymbol{E}_0 \mathrm{e}^{-\boldsymbol{\alpha} \cdot \boldsymbol{x}} \mathrm{e}^{\mathrm{i}(\boldsymbol{\beta} \cdot \boldsymbol{x}-\omega t)}
+\end{align}
+
+这一解中$\mathrm{e}^{-\boldsymbol{\alpha} \cdot \boldsymbol{x}}$的存在表示波幅会随着$x$的增大而衰减.\textbf{垂直入射时}波幅衰减至导体表面原值$\displaystyle \frac{1}{\mathrm{e}}$的传播距离$\delta $称为\textbf{穿透深度}，在良导体$\left(\frac{\sigma}{\varepsilon \omega}\gg 1 \right)$情形，穿透距离
+\begin{align}
+    \delta = \frac{1}{\alpha} = \sqrt{\frac{2}{\omega \mu \sigma}}
+\end{align}
+
+由定义得到
+\begin{align}
+    k^2 = \beta ^2 - \alpha ^2 +2 \mathrm{i}\boldsymbol{\alpha} \cdot \boldsymbol{\beta } = \omega ^2 \mu \left(\varepsilon +\mathrm{i} \frac{\sigma}{\omega}\right)
+\end{align}
+
+比较实部和虚部得到
+\begin{align}
+    &\beta ^2 - \alpha ^2 = \omega ^2 \mu \varepsilon\\
+    &\boldsymbol{\alpha} \cdot \boldsymbol{\beta } = \frac{1}{2}\omega \mu \varepsilon
+\end{align}
+
+垂直入射时，在良导体中近似有
+\begin{align}
+    \alpha \approx \beta = \sqrt{\frac{\omega \mu \sigma}{2}}
+\end{align}
+
+
+\section{电磁波的反射与折射}
+\subsection{Fresnel公式}
+
+\subsubsection{$\boldsymbol{E} \perp $入射面}
+\begin{align}
+    &\frac{E'}{E} = -\frac{\mathrm{sin}(\theta - \theta ')}{\mathrm{sin}(\theta + \theta '')}\\
+    &\frac{E''}{E} = \frac{2\mathrm{cos} \theta \mathrm{sin} \theta '')}{\mathrm{sin}(\theta + \theta '')}
+\end{align}
+
+\subsubsection{$\boldsymbol{E} \parallel $入射面}
+\begin{align}
+    &\frac{E'}{E} = -\frac{\mathrm{tan}(\theta - \theta '')}{\mathrm{tan}(\theta + \theta '')}\\
+    &\frac{E''}{E} = \frac{2\mathrm{cos} \theta \mathrm{sin} \theta '')}{\mathrm{sin}(\theta + \theta '') \mathrm{cos}(\theta - \theta '')}
+\end{align}
+
+当$\theta + \theta '' = \frac{\pi}{2}$时，$\frac{E'}{E} = 0$，反射光的平行分量消失，这个特殊的角称为\textbf{Brewster角}，满足$\mathrm{tan}\theta = n_21$
+
+\subsection{全反射}
+由式\ref{fanshezheshe}知，当$\mathrm{sin}\theta = n_{21}$时，$\theta '' = \pi$，此时折射波沿界面略过.当$\mathrm{sin}\theta > n_{21}$时
+\begin{align}
+    k''_x = k_x = k\mathrm{sin}\theta ,\ k'' = kn_{21}
+\end{align}
+
+故此时$k''_x > k''$，于是
+\begin{align}
+    k''_z = \sqrt{{k''}^2 - {k''_x}^2} = \mathrm{i}k\sqrt{\mathrm{sin}^2\theta - n_{21}^2} = \mathrm{i}\kappa
+\end{align}
+
+此时折射波电场表达式为
+\begin{align}
+    E'' = E''_0\mathrm{e}^{-\kappa z}\mathrm{e}^{\mathrm{i}(k''_xx-\omegat)}
+\end{align}
+
+它的场强沿z轴方向指数衰减，该电磁波只存在于界面附近一薄层内，其厚度
+\begin{align}
+    \kappa ^{-1} = \frac{1}{k\sqrt{\mathrm{sin}\theta - n_{21}^2}} = \frac{\lambda _1}{2\pi \sqrt{\mathrm{sin} \theta - n_{21}^2}}
+\end{align}
+
+\subsection{反射系数}
+反射系数定义为反射能流与入射能流之比
+\begin{align}
+    R = \frac{\bar{\boldsymbol{S}}' \cdot \boldsymbol{e}_n}{\bar{\boldsymbol{S}} \cdot \boldsymbol{e}_n} = \left|\frac{E'_0}{E_0}\right|^2
+\end{align}
+
+与之相对的也有折射系数的概念
+\begin{align}
+    T = \frac{\bar{\boldsymbol{S}}'' \cdot \boldsymbol{e}_n}{\bar{\boldsymbol{S}} \cdot \boldsymbol{e}_n} = \frac{n_2 \mathrm{cos}\theta ''}{n_1 \mathrm{cos}\theta }\left|\frac{E''_0}{E_0}\right|^2
+\end{align}
+
+在没有损耗的情况下，总是存在$T + R = 1$.
+
+在良导体表面，有
+\begin{align}
+    R = \left|\frac{E'_0}{E_0}\right|^2 = 1-2\sqrt{\frac{2\omega \varepsilon _0}{\sigma}}
+\end{align}
+
+即电导率越高，反射系数越接近于1.
+
+\section{波导}
+\subsection{矩形波导}
+取传播方向为$z$轴，在一定频率下，管内电磁波是Helmholtz方程
+\begin{align}
+    \label{bodaohelmholtz}\left\{\begin{array}{l}
+    \nabla ^2 \boldsymbol{E} + k^2 \boldsymbol{E} = 0\\
+    k = \displaystyle \omega \sqrt{\mu \varepsilon}\\
+    \nabla \cdot \boldsymbol{E} = 0
+    \end{array}\right.
+\end{align}
+电磁波应有传播因子$\mathrm{e}^{\mathrm{i}(k_z z-\omega t)}$，故可以设
+\begin{align}
+    \boldsymbol{E}(x,y,z) = \boldsymbol{E}(x,y) \mathrm{e}^{\mathrm{i} k_z z}
+\end{align}
+将其代入式\ref{bodaohelmholtz}中得到
+\begin{align}
+    \label{juxingbodao}\left(\frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2} \right)\boldsymbol{E}(x,y) + (k^2 - k^2_z) \boldsymbol{E}(x,y) = 0
+\end{align}
+
+设$u(x,y) = X(x)Y(y)$为电磁场的任一直角分量，代入\ref{juxingbodao}得到方程组
+\begin{align}
+    \displaystyle \frac{\mathrm{d}^2 X}{\mathrm{d}x^2} + k_x^2 X = 0\\
+    \displaystyle \frac{\mathrm{d}^2 Y}{\mathrm{d}y^2} + k_y^2 Y = 0
+\end{align}
+
+$u(x,y)$的通解为
+\begin{align}
+    u(x,y) = (C_1\  \mathrm{cos}\ k_xx+D_1\ \mathrm{sin}\ k_xx)(C_2\  \mathrm{cos}\ k_yy+D_2\ \mathrm{sin}\ k_yy)
+\end{align}
+
+接下来考虑其边界条件
+\begin{align}
+    \begin{array}{cc}
+    E_y = E_z = 0 & \displaystyle \frac{\partial E_x}{\partial x} = 0(x = 0,a)\\
+    E_x = E_z = 0 & \displaystyle \frac{\partial E_y}{\partial y} = 0(y = 0,b)
+    \end{array}
+\end{align}
+
+解得
+\begin{align}
+    \left\{\begin{array}{l}
+    E_x = A_1\ \mathrm{cos} k_xx\ \mathrm{sin}k_yy\ \mathrm{e}^{\mathrm{i} k_z z}\\
+    E_y = A_1\ \mathrm{sin} k_xx\ \mathrm{cos}k_yy\ \mathrm{e}^{\mathrm{i} k_z z}\\
+    E_z = A_1\ \mathrm{sin} k_xx\ \mathrm{sin}k_yy\ \mathrm{e}^{\mathrm{i} k_z z}
+    \end{array}\right.
+\end{align}
+其中
+\begin{align}
+    k_x = \frac{m\pi}{a},\quad k_y = \frac{n\pi}{b}\quad (m,n = 0,1,2,...)
+\end{align}
+
+再加上条件$\nabla \cdot \boldsymbol{E} = 0$得到
+\begin{align}
+    k_xA_1 + k_yA_1 - \mathrm{i}k_zA_3 = 0
+\end{align}
+即$A_1$，$A_2$和$A_3$中只有两个是独立的.
+
+磁场：
+\begin{align}
+    \boldsymbol{H} = -\frac{\mathrm{i}}{\omega \mu}\nabla \times \boldsymbol{E}
+\end{align}
+
+$E_z = 0$，$H_z \ne 0$的波成为横电波(TE)，$H_z = 0$，$E_z \ne 0$的波成为横磁波(TM)，按($m,n$)的不同又可以将其分为$\mathrm{TE}_{mn}$波和$\mathrm{TM}_{mn}$波.
+
+\subsection{截止频率}
+当激发频率降低至$\displaystyle k<\sqrt{k_x^2 + k_y^2}$，则$k_z$为虚数，传播因子$\mathrm{e}^{\mathrm{i} k_z z}$变为$\mathrm{e}^{-\kappa z}$的衰减因子的形式，此时电磁场不再是沿波导传播的波.能给在波导内传播的波的最低频率$\omega _c$称为该波模的\textbf{截止频率}.前文提到的($m,n$)型波导的截止角频率为
+\begin{align}
+    \omega_{c,mn} = \frac{\pi}{\sqrt{\mu \varepsilon}}\sqrt{\left(\frac{m}{a}\right)^2 + \left(\frac{n}{b}\right)^2}
+\end{align}
+
+若$a>b$则$\mathrm{TE}_10$波的最低截止频率为
+\begin{align}
+    \frac{1}{2\pi}\omega_{c,10} = \frac{1}{2a\sqrt{\mu \varepsilon}} = \frac{c}{2a}\ \mathrm{(vacuum)}
+\end{align}
+相应的截止波长为
+\begin{align}
+    \lambda _{c,10} = 2a
+\end{align}
+
+\end{document}

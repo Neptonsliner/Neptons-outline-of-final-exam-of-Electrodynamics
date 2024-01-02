@@ -1,0 +1,161 @@
+\documentclass[main.tex]{subfiles}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{bm}
+\usepackage{wallpaper}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ctex}
+\usepackage{longtable}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float} %指定图片位置
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{tabularray}
+\usepackage{xeCJK}
+\usepackage{verbatim}
+\usepackage{type1cm}
+\usepackage{tocloft}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{diagbox}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{svg}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[a4paper,left=2.85cm,right=2.85cm,top=2.54cm,bottom=2.54cm]{geometry}
+\renewcommand{\normalsize}{\fontsize{14}{16}\selectfont}
+
+
+\begin{document}
+
+\chapter{矢量分析}
+
+\section{矢量与张量}
+
+\subsection{三维矢量}
+$$\boldsymbol{a} = a_i\boldsymbol{e}_i+a_j\boldsymbol{e}_j+a_k\boldsymbol{e}_k$$
+
+矢量运算：
+\begin{align}
+    &\boldsymbol{a} \cdot \boldsymbol{b} = a_1b_1+a_2b_2+a_3b_3 = \delta _{ij} a^ib^j = a_i b^i\\
+    &\boldsymbol{a} \times \boldsymbol{b} = a_2b_3\boldsymbol{e}_1+a_3b_1\boldsymbol{e}_2+a_1b_2\boldsymbol{e}_3 = \varepsilon ^i_{jk}a^jb^k \\
+    &\boldsymbol{a} \cdot (\boldsymbol{b} \times \boldsymbol{c}) = \delta _{ij}a^i\varepsilon ^j_{kl}b^kc^l = a_j\varepsilon ^j_{kl}b^kc^l = \varepsilon _{jkl}a^jb^kc^l
+\end{align}
+
+\subsection{并矢}
+$$\boldsymbol{a}\boldsymbol{b} = a_ib_j\boldsymbol{e}_i\boldsymbol{e}_j$$
+
+有时可以用二阶张量代替并矢：${\substack{\displaystyle\twoheadrightarrow\atop\displaystyle{\mathcal{T}}\\[0.624em]~}} = T_{ij}\boldsymbol{e}_i\boldsymbol{e}_j = a_ib_j\boldsymbol{e}_i\boldsymbol{e}_j$
+
+并矢运算：
+\begin{align}
+    &(\boldsymbol{a}\boldsymbol{b})\cdot \boldsymbol{c} = a_i b_j c^j \boldsymbol{e}_i \\
+    &\boldsymbol{c}\cdot (\boldsymbol{a}\boldsymbol{b}) = c^i a_i b_j \boldsymbol{e}_j \\
+    &\boldsymbol{c}\cdot (\boldsymbol{a}\boldsymbol{b}) \cdot \boldsymbol{d} = c^i a_i b_j d^j \\
+    &(\boldsymbol{a}\boldsymbol{b}):(\boldsymbol{c}\boldsymbol{d}) = b_i c^i a^j d_j 
+\end{align}
+
+\section{微分场论}
+\subsection{$\nabla $算符}
+在平面直角坐标系中，$\nabla $算符定义为：
+\begin{align}
+    \nabla = \boldsymbol{e}_x\frac{\partial }{\partial x}+\boldsymbol{e}_y\frac{\partial }{\partial y}+\boldsymbol{e}_z\frac{\partial }{\partial z} 
+\end{align}
+
+柱坐标系下定义为：
+\begin{align}
+    \nabla = \boldsymbol{e}_r\frac{\partial }{\partial r}+\boldsymbol{e}_\theta \frac{1}{r} \frac{\partial }{\partial \theta}+\boldsymbol{e}_z\frac{\partial }{\partial z} 
+\end{align}
+
+球坐标系下定义为：
+\begin{align}
+    \nabla = \boldsymbol{e}_r\frac{\partial }{\partial r}+\boldsymbol{e}_\theta \frac{1}{r} \frac{\partial }{\partial \theta}+\boldsymbol{e}_\varphi \frac{1}{r\mathrm{sin}\theta }\frac{\partial }{\partial \varphi} 
+\end{align}
+
+\subsection{梯度}
+定义线元$\mathrm{d}\boldsymbol{l} = \mathrm{d}x\boldsymbol{e}_x+\mathrm{d}y\boldsymbol{e}_y+\mathrm{d}z\boldsymbol{e}_z$
+
+对于一个\textbf{标量场}$\varphi $，可做全微分
+\begin{align}
+    \mathrm{d}\varphi = \frac{\partial \varphi }{\partial x}\mathrm{d}x+\frac{\partial \varphi }{\partial y}\mathrm{d}y+\frac{\partial \varphi }{\partial z}\mathrm{d}z
+\end{align}
+
+于是可以定义该标量场$\varphi $的梯度为
+\begin{align}
+    \mathrm{grad}\ \varphi  =\boldsymbol{e}_x\frac{\partial \varphi }{\partial x}+\boldsymbol{e}_y\frac{\partial \varphi }{\partial y}+\boldsymbol{e}_z\frac{\partial \varphi }{\partial z}
+\end{align}
+
+利用$\nabla $算符，梯度可以表示为
+\begin{align}
+    &\mathrm{grad}\ \varphi  = \nabla \varphi \\
+    &\mathrm{d}\varphi = \nabla \varphi \cdot \mathrm{d}\boldsymbol{l}
+\end{align}
+
+\subsection{散度}
+对于三维矢量场$\boldsymbol{f}(x,y,z)$，设曲面S围着体积$\Delta V$，当$\Delta V \to 0$时，$\boldsymbol{f}$对S的通量与$\Delta V$之比的极限称为$\boldsymbol{f}$的散度：
+\begin{align}
+    \mathrm{div}\ \boldsymbol{f} = \lim_{\Delta V \to 0} \frac{\displaystyle \oint \boldsymbol{f}\cdot \mathrm{d}\boldsymbol{S}}{\Delta V}
+\end{align}
+
+特别地，在直角坐标系下，可以推导出：
+\begin{align}
+    \mathrm{div}\ \boldsymbol{f} = \nabla \cdot \boldsymbol{f}
+\end{align}
+
+要注意的是，在柱坐标系或球坐标系下$\mathrm{div}\ \boldsymbol{f}$也可以写作$\nabla \cdot \boldsymbol{f}$，但只是作为一种写法使用，数学上二者并不相等.在柱坐标系下：
+\begin{align}
+    \mathrm{div}\ \boldsymbol{f} = \frac{1}{r}\frac{\partial (rf_r)}{\partial r}+\frac{1}{r} \frac{\partial f_\theta}{\partial \theta}+\frac{\partial f_z}{\partial z}
+\end{align}
+
+在球坐标系下：
+\begin{align}
+    \mathrm{div}\ \boldsymbol{f} = \frac{1}{r^2}\frac{\partial (r^2f_r)}{\partial r}+\frac{1}{r\mathrm{sin}\theta } \frac{\partial (\theta f_\theta)}{\partial \theta}+\frac{1}{r\mathrm{sin}\theta }\frac{\partial f_z}{\partial z}
+\end{align}
+
+\subsection{旋度}
+对于三维矢量场$\boldsymbol{f}(x,y,z)$，设闭合曲线L围着体积$\Delta S$，当$\Delta S \to 0$时，$\boldsymbol{f}$对L的通量与$\Delta S$之比的极限称为$\boldsymbol{f}$的散度：
+\begin{align}
+    (\mathrm{rot}\ \boldsymbol{f})_n = \lim_{\Delta S \to 0} \frac{\displaystyle \oint \boldsymbol{f}\cdot \mathrm{d}\boldsymbol{l}}{\Delta S}
+\end{align}
+
+同样地，在直角坐标系下有：
+\begin{align}
+    \mathrm{rot}\ \boldsymbol{f} = \nabla \times \boldsymbol{f}
+\end{align}
+
+\subsection{关于旋度与散度的重要定理}
+\subsubsection{微分}
+\begin{align}
+    &\nabla \times (\nabla \varphi ) = 0\\
+    &\nabla \cdot (\nabla \times \boldsymbol{f} ) = 0\\
+    &\nabla \varphi \to \mathrm{vector}\\
+    &\nabla \cdot (\nabla \varphi ) = \nabla ^2 \varphi = \frac{\partial ^2 \varphi}{\partial x^2}+\frac{\partial ^2 \varphi}{\partial y^2}+\frac{\partial ^2 \varphi}{\partial z^2}
+\end{align}
+
+\subsubsection{积分变换式}
+由散度、旋度定义可以得到
+\begin{align}
+    \label{jifenbianhuan1}&\oint_{S}^{}\boldsymbol{f}\cdot \mathrm{d}\boldsymbol{S} = \int_{V}^{} \mathrm{div}\ \boldsymbol{f}\mathrm{d}V\\
+    \label{jifenbianhuan2}&\oint_{L}^{}\boldsymbol{f}\cdot \mathrm{d}\boldsymbol{l} = \int_{S}^{} \mathrm{rot}\ \boldsymbol{f}\mathrm{d}\boldsymbol{S}
+\end{align}
+
+\subsubsection{$\nabla $算符运算公式}
+下方公式中$\varphi ,\psi $代表标量场、$\boldsymbol{f},\boldsymbol{g}$代表矢量场.
+\begin{align}
+    &\nabla (\varphi \psi ) = \varphi \nabla \psi + \psi \nabla \varphi\\
+    &\nabla \cdot (\varphi \boldsymbol{f}) = (\nabla \varphi )\cdot \boldsymbol{f} + \varphi \nabla \cdot \boldsymbol{f}\\
+    &\nabla \times (\varphi \boldsymbol{f}) = (\nabla \varphi )\times \boldsymbol{f} + \varphi \nabla \times \boldsymbol{f}\\
+    \label{nabla4}&\nabla \cdot (\boldsymbol{f}\times \boldsymbol{g}) = (\nabla \times \boldsymbol{f})\cdot \boldsymbol{g} - \boldsymbol{f} \cdot (\nabla \times \boldsymbol{g})\\
+    &\nabla \times (\boldsymbol{f} \times \boldsymbol{g}) = (\boldsymbol{g} \cdot \nabla) \boldsymbol{f}+(\nabla \cdot \boldsymbol{g})\boldsymbol{f}-(\boldsymbol{f} \cdot \nabla)\boldsymbol{g} - (\nabla \cdot \boldsymbol{f})\boldsymbol{g}\\
+    &\nabla(\boldsymbol{f}\cdot \boldsymbol{g}) = \boldsymbol{f}\times (\nabla \times \boldsymbol{g}) + (\boldsymbol{f} \cdot \nabla )\boldsymbol{g} + \boldsymbol{g}\times (\nabla \times \boldsymbol{f})+(\boldsymbol{g} \cdot \nabla)\boldsymbol{f}\\
+    \label{nabla7}&\nabla \times (\nabla \times \boldsymbol{f}) = \nabla (\nabla \cdot \boldsymbol{f}) - \nabla ^2 \boldsymbol{f}
+\end{align}
+\end{document}

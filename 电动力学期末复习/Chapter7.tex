@@ -1,0 +1,565 @@
+\documentclass[main.tex]{subfiles}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{bm}
+\usepackage{wallpaper}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ctex}
+\usepackage{longtable}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float} %指定图片位置
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{tabularray}
+\usepackage{xeCJK}
+\usepackage{verbatim}
+\usepackage{type1cm}
+\usepackage{tocloft}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{diagbox}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{svg}
+\usepackage[hidelinks]{hyperref}
+\usepackage[a4paper,left=2.85cm,right=2.85cm,top=2.54cm,bottom=2.54cm]{geometry}
+\renewcommand{\normalsize}{\fontsize{14}{16}\selectfont}
+
+
+\begin{document}
+
+\chapter{狭义相对论}
+\section{Lorentz变换}
+\subsection{相对论的基本原理}
+Einstein于1905年提出：
+
+(1)光速不变原理.可以记$c=1(3\times 10^8 \mathrm{m}/ \mathrm{s})$
+
+(2)相对性原理：惯性系是等价的.体现了四维矢量的协变性.
+
+\begin{wrapfigure}{r}{7cm}
+	\centering
+    \includesvg[width=0.9\linewidth]{xiangduilun1.svg}
+\end{wrapfigure}
+
+\subsection{四维矢量与协变性}
+
+在牛顿力学中，一个三维矢量$\overrightarrow{PQ}$，其模长$|\overrightarrow{PQ}|^2 = x^2 + y^2 + z^2$，且在任意惯性系下均成立，这就是其牛顿力学的协变性.
+
+四维矢量则是在三个空间维度的基础上引入时间轴，变为$r=(x,y,z,ct)$.此时$|\overrightarrow{PQ}|^2 = x^2 + y^2 + z^2 - c^2t^2$.令$t$为第0分量，我们可以定义一个张量场$g_{ij}$，满足$|\overrightarrow{PQ}|^2 = g_{ij} r^i r^j$，即
+\begin{align}
+    g_{ij} = \left\{\begin{array}{cl}
+  1& \mathrm{when}\ i  = j \ne 0\\
+  -1& \mathrm{when}\ i  = j  = 0\\
+  0&\mathrm{when}\ i \ne j
+\end{array}\right.
+\end{align}
+
+$g_{ij}$被称为（狭义相对论中的）\textbf{度规}.此时
+\begin{align}
+    v_i = g_{ij} v^i = \left\{\begin{array}{cl}
+    v^1 &\mathrm{when}\ i = 1\\
+    v^2 &\mathrm{when}\ i = 2\\
+    v^3 &\mathrm{when}\ i = 3\\
+    -v^0 &\mathrm{when}\ i = 0\\
+    \end{array}\right.
+\end{align}
+
+故$v_iv^i = {v^1}^2+{v^2}^2+{v^3}^2-{v^0}^2$
+
+或者可以令$r = (x,y,z,\mathrm{i}ct)$此时便无需引入度规.
+
+\subsection{间隔不变性}
+由相对性原理得到，当
+\begin{align}
+    x^2 + y^2 + z^2 -c^2t^2 = 0
+\end{align}
+
+时，亦有
+\begin{align}
+    x'^2 + y'^2 + z'^2 -c^2t'^2 = 0
+\end{align}
+
+故一定存在
+\begin{align}
+    x^2 + y^2 + z^2 -c^2t^2 = A(x'^2 + y'^2 + z'^2 -c^2t'^2 )
+\end{align}\
+
+由于空间中不存在特定方向，故亦存在
+\begin{align}
+    x'^2 + y'^2 + z'^2 -c^2t'^2 = A(x^2 + y^2 + z^2 -c^2t^2)
+\end{align}
+
+解得
+\begin{align}
+    \label{jiangebubianxing}\left\{\begin{array}{l}
+    A = 1\\
+    x^2 + y^2 + z^2 -c^2t^2 = x'^2 + y'^2 + z'^2 -c^2t'^2
+    \end{array}\right.
+\end{align}
+
+令
+\begin{align}
+    &s^2 = c^2t^2 - (x^2 + y^2 +z^2)\\
+    &s'^2 = c^2t'^2 - (x'^2 + y'^2 +z'^2)
+\end{align}
+
+则可以把关系式\ref{jiangebubianxing}简写为
+\begin{align}
+    s^2 = s'^2
+\end{align}
+
+称为\textbf{间隔不变性}，表示两事件的间隔不随参考系变换而改变.
+
+\subsection{Lorentz变换的引入}
+
+\begin{wrapfigure}{r}{7cm}
+	\centering
+    \includesvg[width=0.9\linewidth]{xiangduilun2.svg}
+\end{wrapfigure}
+
+为简单考虑，选取$x$轴和$x'$轴都沿$\Sigma '$相对于$\Sigma $的运动方向，此时可以假设
+\begin{align}
+    \label{Lorentzbianhuanshi}\begin{array}{c}
+    x' = a_{11}x+a_{12}ct\\
+    y' = y\\
+    z' = z\\
+    ct' = a_{21}x + a_{22}ct
+    \end{array}
+\end{align}
+
+或是写为
+\begin{align}
+    \begin{bmatrix}
+      a_{11}&a_{12} \\
+      a_{21}&a_{22}
+    \end{bmatrix}  
+    \begin{bmatrix}
+     x\\
+    ct
+    \end{bmatrix} = 
+    \begin{bmatrix}
+     x'\\
+    ct'
+    \end{bmatrix}
+\end{align}
+
+代入时空间隔表达式\ref{jiangebubianxing}得到
+\begin{align}
+    \begin{array}{c}
+        a_{11}^2 - a_{21}^2 = 1\\
+        a_{11}a_{12} - a_{21}a_{22} = 0\\
+        a_{12}^2 - a_{22}^2 = -1
+    \end{array}
+\end{align}
+
+解得
+\begin{align}
+    a_{11} = \sqrt{1+a_{21}^2},\quad a_{22} = \sqrt{1+ a_{12}^2},\quad a_{12} = a_{21}
+\end{align}
+
+对于$\Sigma '$系来说，$O'$点永远$x' = 0$，而对于$\Sigma $系，$O$点坐标为$x = vt$，故由\ref{Lorentzbianhuanshi}第一式得到
+\begin{align}
+    a_{11}vt + a_{12}ct = 0
+\end{align}
+
+即
+\begin{align}
+    \frac{a_{12}}{a_{11}} = -\frac{v}{c}
+\end{align}
+
+进而推导出所有四个系数的值：
+\begin{align}
+    &a_{11} = a_{22} = \frac{1}{\displaystyle \sqrt{1-\frac{v^2}{c^2}}}\\
+    &a_{12} = a_{21} = \frac{\displaystyle -\frac{v}{c}}{\displaystyle \sqrt{1-\frac{v^2}{c^2}}}
+\end{align}
+
+最终得到Lorentz变换公式
+\begin{align}
+    \label{Lorentzbianhuan}\begin{array}{c}
+    x' = \frac{\displaystyle x' - vt}{\displaystyle \sqrt{1-\frac{v^2}{c^2}}}\\
+    y' = y\\
+    z' = z\\
+    t' = \frac{\displaystyle t - \frac{v}{c^2}x}{\displaystyle \sqrt{1- \frac{v^2}{c^2}}}
+    \end{array}
+\end{align}
+
+或者用矩阵形式写成
+\begin{align}
+    \label{Lorentzjuzhen}\begin{bmatrix}
+  \frac{1}{\sqrt{1-\frac{v^2}{c^2} } } & 0 & 0 & -\frac{v}{\sqrt{1-\frac{v^2}{c^2}}} \\
+  0& 1 & 0 &0 \\
+ 0 & 0 & 1 & 0\\
+  -\frac{v/c^2}{\sqrt{1-\frac{v^2}{c^2}}} & 0 & 0 &\frac{1}{\sqrt{1-\frac{v^2}{c^2}}} 
+\end{bmatrix}
+\begin{bmatrix}
+ x\\
+ y\\
+ z\\
+t
+\end{bmatrix}
+=
+\begin{bmatrix}
+ x'\\
+ y'\\
+ z'\\
+t'
+\end{bmatrix}
+\end{align}
+
+由于$\Sigma '$系与$\Sigma $系是等价的，因此若$\Sigma '$系相对$\Sigma $系以$\boldsymbol{v}$的速度运动，则$\Sigma $系相对$\Sigma '$系以$-\boldsymbol{v}$的速度运动.因此将Lorentz变换中的$v$全部改为$-v$即可得到逆变换式
+\begin{align}
+    \begin{array}{c}
+    x' = \frac{\displaystyle x' + vt}{\displaystyle \sqrt{1-\frac{v^2}{c^2}}}\\
+    y' = y\\
+    z' = z\\
+    t' = \frac{\displaystyle t + \frac{v}{c^2}x}{\displaystyle \sqrt{1- \frac{v^2}{c^2}}}
+    \end{array}
+\end{align}
+
+\section{相对论的时空理论}
+\subsection{尺缩效应}
+\begin{wrapfigure}{r}{8cm}
+	\centering
+    \includesvg[width=0.9\linewidth]{xiangduilun3.svg}
+\end{wrapfigure}
+
+应用Lorentz变换式得到
+\begin{align}
+    &x' = \frac{\displaystyle x - vt}{\displaystyle \sqrt{1- \frac{v^2}{c^2}}}\\
+    &\Delta x' = \frac{\displaystyle \Delta x - v\Delta t}{\displaystyle \sqrt{1- \frac{v^2}{c^2}}}
+\end{align}
+
+由于要求同时观测，因此$\Delta t =0$，即
+\begin{align}
+    \Delta x = \Delta x ' \sqrt{1- \frac{v^2}{c^2}}
+\end{align}
+
+该式表明在$\Sigma $系下观测到物体长度$\Delta x$要短于$\Sigma '$系下观测到物体静止长度$\Delta x'$
+
+\subsection{钟慢效应}
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{xiangduilun4.svg} 
+\end{figure}
+
+对于静止坐标系$\Sigma '$而言，两事件发生于同一地点$\boldsymbol{x}'$，设时间间隔为$\Delta \tau$，则时空间隔为
+\begin{align}
+    \Delta s'^2 = c^2 \Delta \tau ^2
+\end{align}
+
+而对于另一坐标系$\Sigma$而言，该物体以$\Delta v$运动，两事件发生于不同地点，设两事件发生的地点间隔$\Delta \boldsymbol{x}$，时间间隔$\Delta t$，则时空间隔为
+\begin{align}
+    \Delta s^2 = c^2 \Delta t^2 -(\Delta \boldsymbol{x})^2
+\end{align}
+
+由间隔不变性有
+\begin{align}
+    c^2 \Delta t^2 -(\Delta \boldsymbol{x})^2 = c^2 \Delta \tau ^2
+\end{align}
+
+$|\Delta \boldsymbol{x}|/\Delta t = v$为物体相对$\Sigma$的运动速度，因此有
+\begin{align}
+    \Delta t = \frac{\displaystyle \Delta \tau }{\displaystyle \sqrt{1- \frac{v^2}{c^2}}}
+\end{align}
+
+即所观测物体运动速度越大，观察到的其内部物理过程进行得越缓慢.
+
+\subsection{速度变换公式}
+由Lorentz变换公式\ref{Lorentzbianhuan}可得
+\begin{align}
+    u'_x = \frac{\mathrm{d}x'}{\mathrm{d}t'} = \frac{\displaystyle (\mathrm{d}x - v\mathrm{d}t)/\sqrt{1 - \frac{v^2}{c^2}}}{\displaystyle (\mathrm{d}t +\frac{v}{c^2}\mathrm{d}x)/\sqrt{1-\frac{v^2}{c^2}}} = \frac{\displaystyle u_x -v}{\displaystyle 1-\frac{vu_x}{c^2}}
+\end{align}
+
+同理可得
+\begin{align}
+    &u'_y = \frac{\displaystyle u_y\sqrt{1-\frac{v^2}{c^2}}}{\displaystyle 1-\frac{vu_x}{c^2}}\\
+    &u'_z = \frac{\displaystyle u_z\sqrt{1-\frac{v^2}{c^2}}}{\displaystyle 1-\frac{vu_x}{c^2}}
+\end{align}
+
+\section{相对论理论的四维形式}
+\subsection{物理量按空间变换性质的重新分类}
+标量：坐标系变换下与取向无关，故不变的物理量，例如质量、电荷.在两坐标系下标量有
+\begin{align}
+    u' = u
+\end{align}
+
+矢量：在两个参考系下满足
+\begin{align}
+    v'_i = a_{ij}v_j
+\end{align}
+的量，例如速度、位矢、相对论中的四维矢量等等.$\nabla $算符在该定义下也可以认为是矢量.
+
+二阶张量（并矢）：当空间变换时满足
+\begin{align}
+    T'_{ij} = a_{ik}a_{im}T_{km}
+\end{align}
+的量（两个分量分别进行变换）.如电磁场应力张量，电四极矩等.
+
+二阶张量又可以进一步分类为
+
+\textbf{对称张量}：$T_{ij} = T_{ji}$
+
+\textbf{反对称张量}：$T_{ij} = -T_{ji}$
+
+不论是对称还是反对称张量，变换后仍具有对称与反对称性.
+
+\textbf{迹}：$\mathrm{Tr}(T_{ij}) = T_{ii}$，对称张量之迹是一个标量.电四极矩是一个无迹对称张量，只有5个独立分量.
+
+\subsection{Lorent变换的四维形式}
+采用虚数单位的形式，沿$x$轴方向的特殊Lorentz变换式 \ref{Lorentzbianhuan} 的变换矩阵为
+\begin{align}
+    a = \begin{bmatrix}
+    \gamma & 0 & 0 & \mathrm{i} \beta \gamma \\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    -\mathrm{i} \beta \gamma & 0 & 0 & \gamma 
+    \end{bmatrix}
+\end{align}
+
+即式\ref{Lorentzjuzhen}.式中$\beta = \displaystyle \frac{v}{c}$，$\gamma = \displaystyle \frac{1}{\sqrt{1- \frac{v^2}{c^2}}}$
+
+逆变换矩阵为
+\begin{align}
+    a^{-1} = \begin{bmatrix}
+    \gamma & 0 & 0 & -\mathrm{i} \beta \gamma \\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    \mathrm{i} \beta \gamma & 0 & 0 & \gamma 
+    \end{bmatrix} = a^{T}
+\end{align}
+
+满足正交条件$a^{T}a = I$
+
+\subsubsection{四维协变量}
+\textbf{位矢的四维矢量}为
+\begin{align}
+    r_{\mu} = (x,y,z,\mathrm{i}ct)
+\end{align}
+
+\textbf{速度的四维矢量}为
+\begin{align}
+    \label{4-sudu}U_{\mu} = \gamma _{u}(u_{1},u_{2},u_{3},\mathrm{i}c)
+\end{align}
+系数$\gamma _{u}$的出现是由于当坐标系变换时$\mathrm{d}x_{i}$按四维矢量的分量变换，但$\mathrm{d}t$也发生改变导致的.
+\begin{align}
+    \gamma _{u} = \frac{\mathrm{d}t}{\mathrm{d}\tau} = \frac{1}{\displaystyle \sqrt{1- \frac{u^2}{c^2}}}
+\end{align}
+
+\textbf{相位的四维矢量}为
+\begin{align}
+    k_{\mu} = \left(k_1, k_2, k_3,\mathrm{i} \displaystyle \frac{\omega}{c}\right)
+\end{align}
+这是由于相位只是计数问题，不随参考系而变，故
+\begin{align}
+    \phi = \phi ' = \mathrm{invariant}
+\end{align}
+即
+\begin{align}
+    \boldsymbol{k} \cdot \boldsymbol{x} -\omega t = \boldsymbol{k}' \cdot \boldsymbol{x}' -\omega ' t' = \mathrm{invariant}
+\end{align}
+由于$\boldsymbol{x}$与$\mathrm{i}ct$合成为四维矢量$x_{\mu}$，故可以设$\boldsymbol{k}$与$\mathrm{i}\displaystyle \frac{\omega}{c}$合成为四维矢量$k_{\mu}$这样便有
+\begin{align}
+    k_{\mu} x_{\mu} = k_{\mu}' x_{\mu}' = \mathrm{invariant}
+\end{align}
+
+\section{电动力学中的协变量}
+\subsection{电流密度矢量}
+电荷量与其运动速度无关，故
+\begin{align}
+    Q = \int \rho \mathrm{d}V = \int \rho \sqrt{\displaystyle 1 - \frac{u^2}{c^2}}\mathrm{d}V' = \int \rho '\mathrm{d}V'
+\end{align}
+得到
+\begin{align}
+    \rho = \displaystyle \frac{\rho '}{\displaystyle \sqrt{1-\frac{u^2}{c^2}}} = \gamma _{u}\rho '
+\end{align}
+
+由于
+\begin{align}
+    \boldsymbol{J} = \rho \boldsymbol{u} = \gamma _u \rho '\boldsymbol{u}
+\end{align}
+因此可以引入
+\begin{align}
+    J_0 = \mathrm{i}c \rho
+\end{align}
+使得
+\begin{align}
+    J_{\mu} = \rho ' U_{\mu}
+\end{align}
+
+电荷守恒定律用四维形式就可以简单表示为
+\begin{align}
+    \frac{\partial J_{\mu}}{\partial x_{\mu}} = 0
+\end{align}
+
+\subsection{四维势矢量}
+用势表示的电动力学基本方程组\ref{d'Alembert}在Lorentz规范下为
+\begin{align}
+    \label{d'Alembert2}\begin{array}{c}
+    \nabla ^2 \boldsymbol{A} - \displaystyle \frac{1}{c^2}\frac{\partial ^2 \boldsymbol{A}}{\partial t^2} = -\mu _0 \boldsymbol{J}\\
+    \nabla ^2 \varphi  - \displaystyle \frac{1}{c^2}\frac{\partial ^2 \varphi }{\partial t^2} = -\frac{\rho}{\varepsilon _0}\\
+    \left(\nabla \cdot \boldsymbol{A} +\displaystyle \frac{1}{c^2}\frac{\partial \varphi }{\partial  t}  = 0\right)
+    \end{array}    
+\end{align}
+
+定义算符
+\begin{align}
+    \Box \equiv \nabla ^2 -\frac{1}{c^2}\frac{\partial ^2}{\partial t^2}  = \frac{\partial }{\partial  x_{\mu}} \frac{\partial }{\partial  x_{\mu}} 
+\end{align}
+则\ref{d'Alembert2}可以改写为
+\begin{align}
+    \begin{array}{c}
+        \label{siweid'Alembert}\Box \boldsymbol{A} = -\mu _0\boldsymbol{J}\\
+         \Box \varphi = -\mu _0 c^2 \rho
+    \end{array}
+\end{align}
+
+可以将$\boldsymbol{A}$和$\varphi$合并为一个四维矢量
+\begin{align}
+    A_{\mu} = \left(\boldsymbol{A},\frac{\mathrm{i}}{c}\varphi \right)
+\end{align}
+
+这样\ref{siweid'Alembert}就可以合写为
+\begin{align}
+    \Box A_{\mu} = -\mu_0J_{\mu}
+\end{align}
+
+\subsection{电磁场张量}
+电磁场$\boldsymbol{E}$和$\boldsymbol{B}$用势表出为
+\begin{align}
+    \begin{array}{c}
+         \boldsymbol{B} = \nabla \times \boldsymbol{A}\\
+         \boldsymbol{E} = -\nabla \varphi - \frac{\partial \boldsymbol{A}}{\partial t}
+    \end{array}
+\end{align}
+其分量为
+\begin{align}
+    \begin{array}{c}
+        B_1 = \displaystyle \frac{\partial A_3}{\partial x_2} - \displaystyle \frac{\partial A_2}{\partial x_3},\ B_2 = \displaystyle \frac{\partial A_1}{\partial x_3} - \displaystyle \frac{\partial A_3}{\partial x_1},\ B_3 = \displaystyle \frac{\partial A_2}{\partial x_1} - \displaystyle \frac{\partial A_1}{\partial x_2}\\
+        E_i = \mathrm{i}c\left(\displaystyle \frac{\partial A_0}{\partial x_i} - \displaystyle \frac{\partial A_i}{\partial x_0} \right)
+    \end{array} 
+\end{align}
+
+引入一个反对称四维张量
+\begin{align}
+    F_{\mu \nu} = \frac{\partial A_{\nu}}{\partial \x_{\mu}} - \frac{\partial A_{\mu}}{\partial \x_{\nu}} = 
+    \begin{bmatrix}
+    0 & \frac{\mathrm{i}}{c}E_1 & \frac{\mathrm{i}}{c}E_2 & \frac{\mathrm{i}}{c}E_3\\
+    -\frac{\mathrm{i}}{c}E_1  & 0 & B_3 & -B_2 \\
+    -\frac{\mathrm{i}}{c}E_2 & -B_3 & 0 & B_1\\
+    -\frac{\mathrm{i}}{c}E_3 & B_2 & -B_1 & 0
+    \end{bmatrix}
+\end{align}
+
+或者按课本上的写法，将$A_{\mu}$中的$\displaystyle \frac{\mathrm{i}}{c} \varphi$作为第四项，则$F_{\mu \nu}$变为\
+\begin{align}
+    F_{\mu \nu} = \begin{bmatrix}
+    0 & B_3 & -B_2 &-\frac{\mathrm{i}}{c}E_1\\
+    -B_3 & 0 & B_1&-\frac{\mathrm{i}}{c}E_2 \\
+    B_2 & -B_1 & 0&-\frac{\mathrm{i}}{c}E_3 \\
+    \frac{\mathrm{i}}{c}E_1 & \frac{\mathrm{i}}{c}E_2 & \frac{\mathrm{i}}{c}E_3 & 0
+    \end{bmatrix}
+\end{align}
+
+于是，Maxwell方程组中的一对方程
+\begin{align}
+    \left\{\begin{array}{l}
+    \nabla \cdot \boldsymbol{E} = \displaystyle \frac{\rho}{\varepsilon _0}\\
+    \nabla \times \boldsymbol{B} = \displaystyle \mu_0 \varepsilon _0 \frac{\partial \boldsymbol{E}}{\partial t} + \mu_0 \boldsymbol{J}
+    \end{array}\right.
+\end{align}
+就可以简写为
+\begin{align}
+    \frac{\partial F_{\mu \nu}}{\partial x_{\nu}} = \mu _0J_{\mu}
+\end{align}
+另一对方程
+\begin{align}
+    \left\{\begin{array}{l}
+    \nabla \cdot \boldsymbol{B} = 0\\
+    \nabla \times \boldsymbol{E} = \displaystyle - \frac{\partial \boldsymbol{B}}{\partial t}
+    \end{array}\right.
+\end{align}
+就可以简写为
+\begin{align}
+    \frac{\partial F_{\mu \nu}}{\partial x_{\lambda}} + \frac{\partial F_{\nu \lambda}}{\partial x_{\mu}} + \frac{\partial F_{\lambda \mu}}{\partial x_{\nu}} = 0
+\end{align}
+
+由张量变换关系$F_{\mu \nu}' = a_{\mu \lambda}a_{\nu \tau}F_{\lambda \tau}$可以得到电场与磁场的变换关系式：
+\begin{align}
+    \begin{array}{cc}
+        \boldsymbol{E}'_\parallel = \boldsymbol{E}_\parallel  & \boldsymbol{B}'_\parallel = \boldsymbol{B}_\parallel \\
+        \boldsymbol{E}'_\perp  = \gamma (\boldsymbol{E}+ \boldsymbol{v} \times \boldsymbol{B})_\perp  & \boldsymbol{B}'_\perp  = \gamma (\boldsymbol{B}-\displaystyle \frac{\boldsymbol{v}}{c^2} \times \boldsymbol{B})_\perp
+    \end{array}
+\end{align}
+
+\section{相对论力学}
+\subsection{能量-动量四维矢量}
+牛顿力学中有
+\begin{align}
+    \boldsymbol{F} = \frac{\mathrm{d}\boldsymbol{p}}{\mathrm{d}t},\quad \boldsymbol{p} = m\boldsymbol{v}
+\end{align}
+
+但$\boldsymbol{v}$在相对论中不是一个协变量，因此可以引入式\ref{4-sudu}以定义\textbf{四维动量矢量}
+\begin{align}
+    p_{\mu} = m_0U_{\mu}
+\end{align}
+其空间与时间分量
+\begin{align}
+    \begin{array}{c}
+    \boldsymbol{p} = \gamma m_0 \boldsymbol{v} = m\boldsymbol{v}\\
+    p_0 = \mathrm{i}c\gamma m_0 = \displaystyle \frac{\mathrm{i}}{c}\gamma m_0 c^2 = \frac{\mathrm{i}}{c}\left(m_0 c^2 + \frac{1}{2}m_0v^2+...\right) = \frac{\mathrm{i}}{c}W
+    \end{array}
+\end{align}
+
+由四维矢量$p_{\mu}$可构成不变量
+\begin{align}
+    p_{\mu}p^{\mu} = \boldsymbol{p}^2 -  \frac{W^2}{c^2} = \mathrm{invariant}
+\end{align}
+在静止系内，$\boldsymbol{p} = 0$，$W = m_0c^2$，因此
+\begin{align}
+    W = \sqrt{p^2 c^2 + m_0^2 c^4}
+\end{align}
+
+\subsection{四维力矢量}
+定义外界对物体的作用可以用一个四维力矢量$K_{\mu}$描述，则
+\begin{align}
+    K_{\mu} = \frac{\mathrm{d}p_{\mu}}{\mathrm{d}\tau}
+\end{align}
+其时间分量
+\begin{align}
+    K_0 = \frac{\mathrm{i}}{c} \frac{\mathrm{d}W}{\mathrm{d}\tau} = \frac{\mathrm{i}}{c} \frac{\mathrm{d}}{\mathrm{d}\tau} = \frac{\mathrm{i}}{c} \frac{c^2}{W}\boldsymbol{p} \cdot \frac{\mathrm{d}\boldsymbol{p}}{\mathrm{d}\tau} = \frac{\mathrm{i}}{c} \boldsymbol{K} \cdot \boldsymbol{v}
+\end{align}
+
+因此，作用在速度$v$物体上的四维力矢量为
+\begin{align}
+    K_{\mu} = \left(\boldsymbol{K},\frac{\mathrm{i}}{c}\boldsymbol{K} \cdot \boldsymbol{v} \right)
+\end{align}
+
+相对论协变的力学方程为
+\begin{align}
+    \left\{\begin{array}{l}
+         \boldsymbol{K} = \displaystyle \frac{\mathrm{d} \boldsymbol{p}} {\mathrm{d} \tau} = \displaystyle \gamma \frac{\mathrm{d} \boldsymbol{p}} {\mathrm{d} t} \\
+          \boldsymbol{K} \cdot \boldsymbol{v} = \displaystyle \frac{\mathrm{d} W} {\mathrm{d} \tau} = \displaystyle \gamma \frac{\mathrm{d} W} {\mathrm{d} t}
+    \end{array}\right.
+\end{align}
+
+定义力为
+\begin{align}
+    \boldsymbol{F} = \sqrt{1 - \frac{v^2}{c^2}} \boldsymbol{K} = \frac{\boldsymbol{K}}{\gamma}
+\end{align}
+则相对论力学方程可以写为
+\begin{align}
+    \left\{\begin{array}{l}
+         \boldsymbol{F} = \displaystyle \frac{\mathrm{d} \boldsymbol{p}} {\mathrm{d} t} \\
+          \boldsymbol{F} \cdot \boldsymbol{v} = \displaystyle \frac{\mathrm{d} W} {\mathrm{d} t}
+    \end{array}\right.
+\end{align}
+
+\end{document}

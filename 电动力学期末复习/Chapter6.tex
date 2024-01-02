@@ -1,0 +1,171 @@
+\documentclass[main.tex]{subfiles}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{bm}
+\usepackage{wallpaper}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ctex}
+\usepackage{longtable}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float} %指定图片位置
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{tabularray}
+\usepackage{xeCJK}
+\usepackage{verbatim}
+\usepackage{type1cm}
+\usepackage{tocloft}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{diagbox}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{svg}
+\usepackage[hidelinks]{hyperref}
+\usepackage[a4paper,left=2.85cm,right=2.85cm,top=2.54cm,bottom=2.54cm]{geometry}
+\renewcommand{\normalsize}{\fontsize{14}{16}\selectfont}
+
+
+\begin{document}
+
+\chapter{电磁波的辐射}
+\section{电磁场的矢势和标势}
+\subsection{电磁场中势的引入}
+真空中电磁场的Maxwell方程组为
+\begin{align}
+    \label{Maxwell4}\left\{\begin{array}{l}
+        \nabla  \times \boldsymbol{E} = -\frac{\partial \boldsymbol{B} }{\partial t}  \\
+        \nabla  \times \boldsymbol{H} = \frac{\partial \boldsymbol{D} }{\partial t}   +\boldsymbol{J}\\
+        \nabla \cdot  \boldsymbol{D} = \rho \\
+        \nabla \cdot \boldsymbol{B} = 0
+    \end{array}\right.
+\end{align}
+
+恒定场中引入矢势$\boldsymbol{A}$使得
+\begin{align}
+    \boldsymbol{B} = \nabla \times \boldsymbol{A}
+\end{align}
+
+将其代入\ref{Maxwell4}第一式中得到
+\begin{align}
+    &\nabla  \times \boldsymbol{E} = -\frac{\partial \boldsymbol{B} }{\partial t} = -\frac{\partial }{\partial t}(\nabla \times \boldsymbol{A}) = -\nabla \times \frac{\partial \boldsymbol{A} }{\partial t}\\
+    &\nabla \times (\boldsymbol{E} + \frac{\partial \boldsymbol{A} }{\partial t}) = 0
+\end{align}
+
+这表示$\displaystyle \boldsymbol{E} + \frac{\partial \boldsymbol{A} }{\partial t}$为无旋场.于是可以设一标势$\varphi$满足
+\begin{align}
+    \displaystyle \boldsymbol{E} + \frac{\partial \boldsymbol{A} }{\partial t} = -\nabla \varphi
+\end{align}
+
+此时电场的表示式为
+\begin{align}
+    \displaystyle \boldsymbol{E}  = -\nabla \varphi - \frac{\partial \boldsymbol{A} }{\partial t}
+\end{align}
+
+要注意的是，此时的势能$\boldsymbol{E}$为非保守场，一般不存在势能概念，标势$\varphi$也\textbf{不再表示电场中的势能}.
+
+\subsection{规范变换}
+由$\boldsymbol{A}$和$\varphi$的任意性，可以做变换
+\begin{align}
+    &\boldsymbol{A} \to \boldsymbol{A}' = \boldsymbol{A} + \nabla \psi\\
+    &\varphi \to \varphi ' = \varphi - \frac{\partial \psi}{\partial t}
+\end{align}
+
+称之为势的\textbf{规范变换}.当势做规范变换时，所有物理量和物理规律都保持不变，称之为规范不变性.
+
+从计算方便考虑，不同的问题可以采用不同的规范条件.其中应用最广泛的是\textbf{Columb规范}和\textbf{Lorentz规范}
+\begin{align}
+&\mathrm{Coulomb\ gauge:} &&\nabla \cdot \boldsymbol{A}  = 0 \\
+&\mathrm{Lorentz\ guage:}  &&\nabla \cdot \boldsymbol{A} +\frac{1}{c^2}\frac{\partial \varphi }{\partial  t}  = 0
+\end{align}
+
+\subsection{d'Alembert方程}
+若采用Lorentz规范，关于$\boldsymbol{A}$和$\varphi$存在方程
+\begin{align}
+    \label{d'Alembert}\begin{array}{c}
+    \nabla ^2 \boldsymbol{A} - \frac{1}{c^2}\frac{\partial ^2 \boldsymbol{A}}{\partial t^2} = -\mu _0 \boldsymbol{J}\\
+    \nabla ^2 \varphi  - \frac{1}{c^2}\frac{\partial ^2 \varphi }{\partial t^2} = -\frac{\rho}{\varepsilon _0}\\
+    \left(\nabla \cdot \boldsymbol{A} +\frac{1}{c^2}\frac{\partial \varphi }{\partial  t}  = 0\right)
+\end{array}    
+\end{align}
+
+称该方程为\textbf{d'Alembert方程}，解该方程得到
+\begin{align}
+    &\varphi(\boldsymbol{x},t) = \frac{1}{4\pi \varepsilon _0} \int_V \frac{\displaystyle \rho \left(\boldsymbol{x}' ,t - \frac{r}{c} \right)}{r} \mathrm{d}V'\\
+    \label{solvedalembertA}&\boldsymbol{A}(\boldsymbol{x},t) = \frac{\mu _0}{4\pi } \int_V \frac{\displaystyle \boldsymbol{J} \left(\boldsymbol{x}' ,t - \frac{r}{c} \right)}{r} \mathrm{d}V'
+\end{align}
+
+这个解说明电荷产生的物理作用不能立刻传至该点，而是在较晚的时刻才传到场点，所推迟的时间$r/c$正是电磁作用从源点$x'$传到场点$x$所用的时间.即\textbf{电磁作用具有一定的传播速度$c$}.
+
+\section{电偶极辐射}
+\subsection{计算辐射场的一般公式}
+若$\boldsymbol{J}$是一定频率$\omega$的交变电流，则有
+\begin{align}
+    \boldsymbol{J}(\boldsymbol{x}',t) = \boldsymbol{J}(\boldsymbol{x}')\mathrm{e}^{-\mathrm{i}\omega t}
+\end{align}
+
+代入\ref{solvedalembertA}中得到
+\begin{align}
+    \boldsymbol{A}(\boldsymbol{x},t) = \frac{\mu _0}{4\pi } \int_V \frac{\displaystyle \boldsymbol{J}(\boldsymbol{x}')\mathrm{e}^{\mathrm{i}(kr-\omega t)}} {r} \mathrm{d}V'
+\end{align}
+
+设$\boldsymbol{A}(\boldsymbol{x},t) = \boldsymbol{A}(\boldsymbol{x})\mathrm{e}^{-\mathrm{i}\omega t}$，则有
+
+\begin{align}
+    \boldsymbol{A}(\boldsymbol{x}) = \frac{\mu _0}{4\pi } \int_V \frac{\displaystyle \boldsymbol{J}(\boldsymbol{x}')\mathrm{e}^{\mathrm{i}kr}} {r} \mathrm{d}V'
+\end{align}
+
+其中$\mathrm{e}^{\mathrm{i}kr}$是推迟作用因子，表示电磁波传至场点时有相位滞后$kr$.
+
+在一定频率的交变电流中同样有
+\begin{align}
+    &\nabla \cdot \boldsymbol{J} = \mathrm{i} \omega \rho\\
+    &\rho(\boldsymbol{x}',t) = \rho(\boldsymbol{x}') \mathrm{e}^{\mathrm{i}\omega t}
+\end{align}
+
+可以确定标势
+\begin{align}
+    \varphi(\boldsymbol{x},t) = \int_V \frac{\displaystyle \rho \left(\boldsymbol{x}' ,t - \frac{r}{c} \right)}{4\pi \varepsilon _0 r} \mathrm{d}V' = \int_V \frac{\displaystyle \rho (\boldsymbol{x}') \mathrm{e}^{\mathrm{i}(kr-\omega t)}}{4\pi \varepsilon _0 r}\mathrm{d}V'
+\end{align}
+
+最终确定
+\begin{align}
+    &\boldsymbol{B} = \nabla \times \boldsymbol{A}\\
+    &\boldsymbol{E} =  \frac{\mathrm{i}c}{k}\nabla \times \boldsymbol{B} (\mathrm{when}\ \boldsymbol{J} = 0)= -\nabla \varphi - \frac{\partial \boldsymbol{A}}{\partial t}(\mathrm{anywhere})
+\end{align}
+
+\subsection{矢势展开}
+根据$r$和$\lambda$的大小，空间可以分为三个区域：
+
+(1)$r\ll \lambda$：近区
+
+(2)$r\approx \lambda$：感应区
+
+(3)$r\gg \lambda$：远区（辐射区）
+
+近区内有$kr\ll 1$，推迟因子$\mathrm{e}^{\mathrm{i}kr}\approx 1$，此时电场和磁场具有类似恒定场的性质。远区内可以将$\boldsymbol{A}$对$\boldsymbol{x}'/\lambda$展开得到
+\begin{align}
+    \boldsymbol{A}(\boldsymbol{x}) = \frac{\mathrm{e}^{\mathrm{i}kR}\mu _0}{4\pi R} \int _{v} \boldsymbol{J}(\boldsymbol{x}')(1-\mathrm{i}k \boldsymbol{e}_R \cdot \boldsymbol{x}'+...)\mathrm{d}V'
+\end{align}
+
+其中第一项代表振荡电偶极矩产生的辐射
+\begin{align}
+    \boldsymbol{A}(\boldsymbol{x}) = \frac {\mathrm{e} ^{\mathrm{i}kR}\mu _0} {4\pi R} \int _{v} \boldsymbol{J} (\boldsymbol{x}') \mathrm{d}V' = \frac {\mathrm{e} ^{\mathrm{i}kR}\mu _0} {4\pi R} \frac{\mathrm{d} \boldsymbol{p}}{\mathrm{d}t}
+\end{align}
+
+第二项代表磁偶极辐射势与电偶极辐射势的和
+\begin{align}
+    \boldsymbol{A}(\boldsymbol{x}) &= \frac {-\mathrm{i}k\mathrm{e} ^{\mathrm{i}kR}\mu _0} {4\pi R} \int _{v} \boldsymbol{J} (\boldsymbol{x}') (\boldsymbol{e}_R \cdot \boldsymbol{x}') \mathrm{d}V'\\
+    &= -\frac {\mathrm{i}k\mathrm{e} ^{\mathrm{i}kR}\mu _0} {4\pi R} \left(-\boldsymbol{e}_R \times \boldsymbol{m} + \frac{1}{6} \boldsymbol{e}_R \cdot \frac{\mathrm{d}}{\mathrm{d}t}{\substack{\displaystyle\twoheadrightarrow\atop\displaystyle{\mathcal{D}}\\[0.624em]~}} \right)
+\end{align}
+
+
+
+\end{document}
